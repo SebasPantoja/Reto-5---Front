@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!--JavaScrip de las funciones-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="js/misFunciones.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#myBtn").click(function () {
+                $("#myModal").modal();
+            });
+        });
+    </script>
+
+    <!--Jquery de bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <title>Auditorium | Inicio</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+</head>
+
+<body
+    style="background-image: linear-gradient(to bottom, rgba(32, 0, 0, 0.836)0%,rgba(126, 78, 78, 0.856) 0%), url(https://lambdatres.com/wp-content/uploads/2011/12/mueble-auditorio-04.jpg)">
+
+
+    <!-- Titulo de cabecera-->
+    <div class="jumbotron text-white text-center "
+        style="background-image: linear-gradient(to bottom, rgba(32, 0, 0, 0.836)30%,rgba(126, 78, 78, 0.856) 100%), url(https://lambdatres.com/wp-content/uploads/2011/12/mueble-auditorio-04.jpg)">
+        <h1 class="display-3">ALQUILER DE AUDITORIOS</h1>
+    </div>
+
+
+
+    <!-- Container para los reportes en ventana modal-->
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <div class="card" style="width: 18rem; height: 23rem; background-color: rgb(172, 141, 141);">
+                    <div class="card-body">
+                        <h3 class="card-title">RETO 4<br>
+                            <h4>Mision TIC</h4>
+                        </h3>
+                        <hr><br>
+                        <p style="font-size: 130%; text-align: left;" class="card-text">Este es mi diseño de FrontEnd
+                            para completar el desarrollo del Reto 4.<br><br>
+
+
+                        <div class="container mt-3">
+                            <!-- Trigger the modal with a button -->
+                            <button type="button" class="btn btn-primary"
+                                style="background-color:rgb(58, 30, 30); border-color: rgb(117, 89, 89); border"
+                                id="myBtn">Reportes de los auditorios </button>
+
+                            <!-- The Modal -->
+                            <div class="modal fade" id="myModal">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Generar Reportes</h4>
+                                            <button type="button" class="close" data-dismiss="modal">×</button>
+                                        </div>
+
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <div class="container">
+                                                <div class="card" style="margin-top: 3%;">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Reporte por Status</h4>
+                                                        <p class="card-text">
+                                                        <div id="resultadoStatus" class="collapse"></div>
+                                                        </p>
+                                                        <a class="card-link"><button data-toggle="collapse"
+                                                                data-target="#resultadoStatus"
+                                                                class="btn btn-primary mb-xl-2 mr-2 mt-3 col text-center"
+                                                                style="background-color:rgb(116, 50, 50);"
+                                                                onclick="traerReporteStatus()"> Generar Reporte
+                                                            </button></a>
+                                                    </div>
+
+
+
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Reporte por Fechas</h4>
+                                                        <p class="card-text">
+                                                        <div class="tab-content" id="resultadoDate" class="collapse">
+                                                        </div>
+                                                        </p>
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <div
+                                                                    class="form-group pmd-textfield pmd-textfield-floating-label">
+                                                                    <label class="control-label">Fecha de inicio</label>
+                                                                    <input class="form-control" type="date"
+                                                                        id="RstarDate" placeholder="Tiempo de inicio">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div
+                                                                    class="form-group pmd-textfield pmd-textfield-floating-label">
+                                                                    <label class="control-label">Fecha de
+                                                                        entrega</label>
+                                                                    <input class="form-control " type="date"
+                                                                        id="RdevolutionDate"
+                                                                        placeholder="Tiempo de entrega">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <a class="card-link"><button data-toggle="collapse"
+                                                                data-target="#resultadoDate"
+                                                                class="btn btn-primary col text-center"
+                                                                style="background-color:rgb(116, 50, 50);  "
+                                                                onclick="traerReporteDate()"> Generar
+                                                                Reporte </button></a>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Reporte Cantidad / Clientes</h4>
+                                                        <p class="card-text">
+                                                        <div id="resultadoClientes"></div>
+                                                        </p>
+                                                        <a class="card-link"><button data-toggle="collapse"
+                                                                data-target="#resultadoClientes"
+                                                                class="btn btn-primary mb-xl-2 mr-2 mt-3 col text-center"
+                                                                style="background-color:rgb(116, 50, 50);"
+                                                                onclick="traerReporteClientes()"> Generar Reporte
+                                                            </button></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger"
+                                                data-dismiss="modal">Cerrar</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm">
+                <!-- Acordeon con menus -->
+                <div id="accordion">
+                    <div class="card" style="background-color: rgb(70, 26, 26);">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-outline-light btn-lg btn-block" data-toggle="collapse"
+                                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Auditorios
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+
+                                <!-- tarjetas con imagenes-->
+                                <div class="card-deck">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Crea un auditorio</h5>
+
+
+                                            <div class="card-body">
+                                                <h3 class="card-title"> Auditorio</h3>
+                                                <input class="form-control mb-xl-2 mr-2 mt-3" type="text" id="Aname"
+                                                    placeholder="Nombre">
+                                                <input class="form-control mb-xl-2 mr-2 mt-3" type="text" id="Aowner"
+                                                    placeholder="Propietario">
+                                                <input class="form-control  mb-xl-2 mr-2 mt-3" type="number"
+                                                    id="Acapacity" placeholder="Capacidad">
+                                                <input class="form-control  mb-xl-2 mr-2 mt-3" type="text"
+                                                    id="Adescription" placeholder="Detalles">
+                                                <button class="btn btn-primary mb-xl-2 mr-2 mt-3 ml-3"
+                                                    style="background-color:rgb(116, 50, 50);"
+                                                    onclick="guardarInformacionAuditorios()">
+                                                    Guardar</button>
+                                                <button class="btn btn-primary mb-xl-2 mr-2 mt-3"
+                                                    style="background-color:rgb(116, 50, 50);"
+                                                    onclick="traerInformacionAuditorios()">
+                                                    Consultar</button>
+                                            </div>
+
+                                        </div>
+                                        <div class="card-footer">
+                                            <small class="text-muted"></small>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Auditorios creados</h5>
+
+                                            <div class="card text-black-70 bg-light mb-4 " id="audience" class="col">
+                                                <img class="card-img-top"
+                                                    src="https://decoratel.com/wp-content/uploads/2019/12/butacas-auditorio-cuenca.jpg"
+                                                    alt="Card image cap">
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <small class="text-muted"></small>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" style="background-color: rgb(70, 26, 26);">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-outline-light collapsed btn-lg btn-block" data-toggle="collapse"
+                                    data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Tipos
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body">
+
+                                <!-- tarjetas con imagenes-->
+                                <div class="card-deck">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Crea una categoria</h5>
+                                            <div class="card-body">
+                                                <h3 class="card-title"> Tipos</h3>
+                                                <input class="form-control mb-xl-2 mr-2 mt-3" type="text" id="Tname"
+                                                    placeholder="Nombre">
+                                                <input class="form-control mb-xl-2 mr-2 mt-3" type="text"
+                                                    id="Tdescription" placeholder="Detalles">
+                                                <button class="btn btn-primary mb-xl-2 mr-2 mt-3 ml-3"
+                                                    style="background-color:rgb(116, 50, 50);"
+                                                    onclick="guardarInformacionTipos()">
+                                                    Guardar</button>
+                                                <button class="btn btn-primary mb-xl-2 mr-2 mt-3"
+                                                    style="background-color:rgb(116, 50, 50);"
+                                                    onclick="traerInformacionTipos()">
+                                                    Consultar</button>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <small class="text-muted"></small>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Tipos de categorias creadas</h5>
+                                            <div class="card text-black-70 bg-light mb-4 ml-4" id="category"
+                                                class="col">
+                                                <img class="card-img-top"
+                                                    src="https://decoratel.com/wp-content/uploads/2019/12/butacas-auditorio-cuenca.jpg"
+                                                    alt="Card image cap">
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <small class="text-muted"></small>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" style="background-color: rgb(70, 26, 26);">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                                <button class="btn btn-outline-light collapsed btn-lg btn-block" data-toggle="collapse"
+                                    data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Clientes
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                            data-parent="#accordion">
+                            <div class="card-body">
+
+                                <!-- tarjetas con imagenes-->
+                                <div class="card-deck">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Registra un cliente</h5>
+                                            <div class="card-body">
+                                                <h3 class="card-title"> Clientes</h3>
+                                                <input class="form-control mb-xl-2 mr-2 mt-3" type="text" id="CLemail"
+                                                    placeholder="email">
+                                                <input class="form-control mb-xl-2 mr-2 mt-3" type="text"
+                                                    id="CLpassword" placeholder="password">
+                                                <input class="form-control mb-xl-2 mr-2 mt-3" type="text" id="CLname"
+                                                    placeholder="name">
+                                                <input class="form-control mb-xl-2 mr-2 mt-3" type="number" id="CLage"
+                                                    placeholder="age">
+                                                <button class="btn btn-primary mb-xl-2 mr-2 mt-3 ml-3"
+                                                    style="background-color:rgb(116, 50, 50);"
+                                                    onclick="guardarInformacionClientes()">
+                                                    Guardar</button>
+                                                <button class="btn btn-primary mb-xl-2 mr-2 mt-3"
+                                                    style="background-color:rgb(116, 50, 50);"
+                                                    onclick="traerInformacionClientes()">
+                                                    Consultar</button>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <small class="text-muted"></small>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Clientes registrados</h5>
+                                            <div class="card text-black-70 bg-light mb-4 ml-4" id="client" class="col">
+                                                <img class="card-img-top"
+                                                    src="https://decoratel.com/wp-content/uploads/2019/12/butacas-auditorio-cuenca.jpg"
+                                                    alt="Card image cap">
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <small class="text-muted"></small>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" style="background-color: rgb(70, 26, 26);">
+                        <div class="card-header" id="headingFour">
+                            <h5 class="mb-0">
+                                <button class="btn btn-outline-light btn-lg btn-block" data-toggle="collapse"
+                                    data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Mensajes
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                            <div class="card-body">
+
+                                <!-- tarjetas con imagenes-->
+                                <div class="card-deck">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Envia un mensaje</h5>
+                                            <div class="card-body">
+                                                <h3 class="card-title"> Mensajes</h3>
+                                                <input class="form-control mb-xl-2 mr-2 mt-3" type="number" id="mId"
+                                                    placeholder="id">
+                                                <input class="form-control mb-xl-2 mr-2 mt-3" type="text" id="mText"
+                                                    placeholder="message">
+                                                <button class="btn btn-primary mb-xl-2 mr- mt-3 ml-3"
+                                                    style="background-color:rgb(116, 50, 50);"
+                                                    onclick="guardarInformacionMensajes()">
+                                                    Guardar</button>
+                                                <button class="btn btn-primary mb-xl-2 ml-2 mt-3 "
+                                                    style="background-color:rgb(116, 50, 50);"
+                                                    onclick="traerInformacionMensajes()">
+                                                    Consultar</button>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <small class="text-muted"></small>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Mensajes guardados</h5>
+                                            <div class="card text-black-70 bg-light mb-4 ml-4" id="message" class="col">
+                                                <img class="card-img-top"
+                                                    src="https://decoratel.com/wp-content/uploads/2019/12/butacas-auditorio-cuenca.jpg"
+                                                    alt="Card image cap">
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <small class="text-muted"></small>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" style="background-color: rgb(70, 26, 26);">
+                        <div class="card-header" id="headingFive">
+                            <h5 class="mb-0">
+                                <button class="btn btn-outline-light btn-lg btn-block " data-toggle="collapse"
+                                    data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    Reservaciones
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                            <div class="card-body">
+
+                                <!-- tarjetas con imagenes-->
+                                <div class="card-deck">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Registra una reservación</h5>
+                                            <div class="card-body">
+                                                <h3 class="card-title"> Reservas</h3>
+                                                <input class="form-control mb-xl-2 mr-2 mt-3" type="number" id="rId"
+                                                    placeholder="Id Reserva">
+                                                <input class="form-control mb-xl-2 mr-2 mt-3" type="datetime-local"
+                                                    id="rStartDate" placeholder="Start Date">
+                                                <input class="form-control mb-xl-2 mr-2 mt-3" type="datetime-local"
+                                                    id="rDevolutionDate" placeholder="Devolution Date">
+                                                <input class="form-control mb-xl-2 mr-2 mt-3" type="text" id="rStatus"
+                                                    placeholder="Status">
+                                                <button class="btn btn-primary mb-xl-2 mr-2 mt-3 ml-3"
+                                                    style="background-color:rgb(116, 50, 50);"
+                                                    onclick="guardarInformacionReservas()">
+                                                    Guardar</button>
+                                                <button class="btn btn-primary mb-xl-2 mr-2 mt-3"
+                                                    style="background-color:rgb(116, 50, 50);"
+                                                    onclick="traerInformacionReservas()">
+                                                    Consultar</button>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <small class="text-muted"></small>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Reservas registradas</h5>
+                                            <div class="card text-black-70 bg-light mb-4 ml-4" id="reservation"
+                                                class="col">
+                                                <img class="card-img-top"
+                                                    src="https://decoratel.com/wp-content/uploads/2019/12/butacas-auditorio-cuenca.jpg"
+                                                    alt="Card image cap">
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <small class="text-muted"></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <footer class="text-center text-white" style="background-color: #4d2e2e8f; margin-top: 0.7%;;">
+
+
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                © 2021 - Diseñado por
+                <a class="text-white" href="">Juan Sebastian Pantoja</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+    </div>
+
+</body>
+
+
+<!-- <footer class="text-center text-white" style="background-color: #4d2e2e8f; margin-top: 16.7%;;"> -->
+
+
+<!-- Copyright -->
+<!-- <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2021 - Diseñado por
+        <a class="text-white" href="">Juan Sebastian Pantoja</a>
+    </div> -->
+<!-- Copyright -->
+<!-- </footer> -->
+
+</html>
